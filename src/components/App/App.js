@@ -1,11 +1,12 @@
 import React, { Component } from "react";
 import "./App.css";
 
-import Forum from "./components/forum/Forum";
-import NewTopic from "./components/forum/NewTopic";
+import Forum from "../forum/Forum";
+import NewTopic from "../forum/NewTopic";
 
 class App extends Component {
     componentDidMount() {
+        console.log(this.props);
         this.props.requestData();
     }
 
@@ -13,7 +14,7 @@ class App extends Component {
         return (
             <React.Fragment>
                 {/* <Breadcrumb /> */}
-                <Forum />
+                <Forum posts={this.props.posts} />
                 <NewTopic />
                 {/* <Login /> */}
             </React.Fragment>

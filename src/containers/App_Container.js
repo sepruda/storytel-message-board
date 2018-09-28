@@ -1,7 +1,7 @@
 import { connect } from "react-redux";
 
-import { requestData } from "../redux/actions/action_creators";
-import App from "../App";
+import { requestData, requestPostData } from "../redux/actions/action_creators";
+import App from "../components/App/App";
 
 const mapStateToProps = state => {
     return {
@@ -17,7 +17,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        requestData: () => dispatch(requestData())
+        requestData: () => dispatch(requestData()),
+        requestPostData: id => dispatch(requestPostData(id))
     };
 };
 
