@@ -2,7 +2,6 @@ import React from "react";
 
 import "./ForumBody.css";
 import ForumPost from "../ForumPost";
-import { Route, Switch } from "react-router-dom";
 
 const forumBody = props => {
     let date = props.date;
@@ -39,7 +38,7 @@ const forumBody = props => {
                                     subject={post.title}
                                     author={post.userId}
                                     message={post.body}
-                                    date={date}
+                                    date={post.date}
                                 />
                             );
                         })}

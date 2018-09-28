@@ -1,4 +1,5 @@
 import * as Type from "../constants/action_types";
+import { generateDates } from "../actions/helper_functions/helper_functions";
 
 // *** SYNCRONOUS ACTIONS ***
 
@@ -28,27 +29,9 @@ export const requestData = () => {
             })
             .then(data => {
                 const posts = data.slice(0, 10);
+                generateDates(posts);
                 console.log(posts);
                 dispatch(fetchDataReceive(posts));
-            })
-            .catch(err => {
-                console.log(err);
-            });
-    };
-};
-
-export const requestPostData = id => {
-    return dispatch => {
-        dispatch(fetchDataStart());
-
-        const baseUrl = "https://jsonplaceholder.typicode.com";
-        return fetch(baseUrl + "/posts/" + id)
-            .then(response => {
-                return response.json();
-            })
-            .then(data => {
-                console.log(data);
-                // dispatch(fetchDataReceive(posts));
             })
             .catch(err => {
                 console.log(err);

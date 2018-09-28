@@ -2,11 +2,9 @@ import React, { Component } from "react";
 import "./App.css";
 
 import Forum from "../forum/Forum";
-import NewTopic from "../forum/NewTopic";
 
 class App extends Component {
     componentDidMount() {
-        console.log(this.props);
         this.props.requestData();
     }
 
@@ -14,8 +12,8 @@ class App extends Component {
         return (
             <React.Fragment>
                 {/* <Breadcrumb /> */}
-                <Forum posts={this.props.posts} />
-                <NewTopic />
+                <Forum posts={this.props.posts} loading={this.props.loading} />
+                {/* <NewTopic /> */}
                 {/* <Login /> */}
             </React.Fragment>
         );
