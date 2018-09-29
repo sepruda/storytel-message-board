@@ -4,10 +4,6 @@ import "./ForumBody.css";
 import ForumPost from "../ForumPost";
 
 const forumBody = props => {
-    let date = props.date;
-    if (!props.date) {
-        date = new Date().toLocaleString();
-    }
     return (
         <div className="row">
             <div className="col-12">

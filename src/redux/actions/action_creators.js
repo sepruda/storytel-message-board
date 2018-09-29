@@ -16,25 +16,53 @@ export const fetchDataReceive = data => {
     };
 };
 
-// *** ASYNCRONOUS ACTIONS ***
+export const fetchDataEnd = () => {
+    return {
+        type: Type.FETCH_DATA_END
+    };
+};
 
+export const addPostToStore = data => {
+    return {
+        type: Type.ADD_POST_TO_STORE,
+        data
+    };
+};
+
+// *** ASYNCRONOUS ACTIONS ***
+const baseUrl = "https://jsonplaceholder.typicode.com";
 export const requestData = () => {
     return dispatch => {
         dispatch(fetchDataStart());
 
-        const baseUrl = "https://jsonplaceholder.typicode.com";
         return fetch(baseUrl + "/posts")
-            .then(response => {
-                return response.json();
-            })
+            .then(response => response.json())
             .then(data => {
-                const posts = data.slice(0, 10);
+                const posts = data.slice(8, 18);
                 generateDates(posts);
                 console.log(posts);
                 dispatch(fetchDataReceive(posts));
             })
-            .catch(err => {
-                console.log(err);
-            });
+            .catch(err => console.log(err));
+    };
+};
+
+export const postDataHandler = data => {
+    return dispatch => {
+        dispatch(fetchDataStart());
+        dispatch(addPostToStore(data));
+        return fetch(baseUrl + "/posts", {
+            method: "POST",
+            body: JSON.stringify(data),
+            headers: {
+                "Content-type": "application/json"
+            }
+        })
+            .then(response => response.json())
+            .then(data => {
+                dispatch(fetchDataEnd());
+                console.log("Success", JSON.stringify(data));
+            })
+            .catch(error => console.log("Error", error));
     };
 };

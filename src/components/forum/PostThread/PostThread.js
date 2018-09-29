@@ -1,8 +1,13 @@
 import React, { Component } from "react";
 
 import "./PostThread.css";
+import { requestData } from "../../../redux/actions/action_creators";
 
 class PostThread extends Component {
+    componentDidMount() {
+        if (this.props.post) console.log(this.props.requestData);
+    }
+
     render() {
         return (
             <div className="row">
