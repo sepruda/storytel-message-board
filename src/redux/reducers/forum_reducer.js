@@ -6,14 +6,7 @@ import {
 } from "../constants/action_types";
 
 const initialState = {
-    posts: [],
-    post: {
-        userId: 0,
-        date: "",
-        id: 0,
-        title: "",
-        body: ""
-    },
+    messages: [],
     loading: false
 };
 
@@ -22,13 +15,13 @@ export const forum_reducer = (state = initialState, action) => {
         case FETCH_DATA_START:
             return { ...state, loading: true };
         case FETCH_DATA_RECEIVE:
-            return { ...state, posts: action.data, loading: false };
+            return { ...state, messages: action.data, loading: false };
         case FETCH_DATA_END:
             return { ...state, loading: false };
         case ADD_POST_TO_STORE:
             return {
                 ...state,
-                posts: [...state.posts, action.data]
+                messages: [...state.messages, action.data]
             };
         default:
             return state;

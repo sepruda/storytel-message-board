@@ -1,0 +1,22 @@
+[
+  {
+    "id": 1,
+    "message": "lorem ipsum",
+    "author": 123
+  },
+  {
+    "id": 2,
+    "message": "lorem ipsum",
+    "author": 234
+  },
+  {
+    "id": 3,
+    "message": "lorem ipsum",
+    "author": 345
+  },
+  {
+    "message": "New message edited",
+    "author": 999,
+    "id": 4
+  }
+]

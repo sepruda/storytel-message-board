@@ -5,14 +5,7 @@ import App from "../components/App/App";
 
 const mapStateToProps = state => {
     return {
-        posts: state.posts,
-        post: {
-            userId: state.post.userId,
-            date: state.post.date,
-            id: state.post.id,
-            title: state.post.title,
-            body: state.post.body
-        },
+        messages: state.messages,
         loading: state.loading
     };
 };

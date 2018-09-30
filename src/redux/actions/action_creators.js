@@ -30,18 +30,21 @@ export const addPostToStore = data => {
 };
 
 // *** ASYNCRONOUS ACTIONS ***
-const baseUrl = "https://jsonplaceholder.typicode.com";
+const baseUrl = "http://localhost:3000/messages";
 export const requestData = () => {
     return dispatch => {
         dispatch(fetchDataStart());
 
-        return fetch(baseUrl + "/posts")
+        return fetch(baseUrl, {
+            method: "GET",
+            headers: {
+                "Content-type": "application-json"
+            }
+        })
             .then(response => response.json())
             .then(data => {
-                const posts = data.slice(8, 18);
-                generateDates(posts);
-                console.log(posts);
-                dispatch(fetchDataReceive(posts));
+                console.log(data);
+                dispatch(fetchDataReceive(data));
             })
             .catch(err => console.log(err));
     };

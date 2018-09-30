@@ -1,0 +1,85 @@
+GET http://localhost:3000/messages
+Accept: */*
+Cache-Control: no-cache
+Content-Type: application/json
+
+{"message": "New message edited", "author": 999}
+
+<> 2018-09-30T091537.200.json
+
+###
+
+DELETE http://localhost:3000/messages/4
+Accept: */*
+Cache-Control: no-cache
+Content-Type: application/json
+
+{"message": "New message edited", "author": 999}
+
+<> 2018-09-30T091532.200.json
+
+###
+
+GET http://localhost:3000/messages/4
+Accept: */*
+Cache-Control: no-cache
+Content-Type: application/json
+
+{"message": "New message edited", "author": 999}
+
+<> 2018-09-30T091520.200.json
+
+###
+
+GET http://localhost:3000/messages
+Accept: */*
+Cache-Control: no-cache
+Content-Type: application/json
+
+{"message": "New message edited", "author": 999}
+
+<> 2018-09-30T091459.200.json
+
+###
+
+PUT http://localhost:3000/messages/4
+Accept: */*
+Cache-Control: no-cache
+Content-Type: application/json
+
+{"message": "New message edited", "author": 999}
+
+<> 2018-09-30T091452.200.json
+
+###
+
+GET http://localhost:3000/messages
+Accept: */*
+Cache-Control: no-cache
+Content-Type: application/json
+
+{"message": "New message", "author": 999}
+
+<> 2018-09-30T091355.200.json
+
+###
+
+POST http://localhost:3000/messages
+Accept: */*
+Cache-Control: no-cache
+Content-Type: application/json
+
+{"message": "New message", "author": 999}
+
+<> 2018-09-30T091323.201.json
+
+###
+
+GET http://localhost:3000/messages
+Accept: */*
+Cache-Control: no-cache
+
+<> 2018-09-30T091049.200.json
+
+###
+
