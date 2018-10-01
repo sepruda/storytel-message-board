@@ -29,8 +29,15 @@ export const addPostToStore = data => {
     };
 };
 
+export const setIdEditedMessage = id => {
+    return {
+        type: Type.SET_ID_EDITED_MESSAGE,
+        id
+    };
+};
+
 // *** ASYNCRONOUS ACTIONS ***
-const baseUrl = "http://localhost:3000/messages";
+const baseUrl = "http://localhost:3000/messages/";
 export const requestData = () => {
     return dispatch => {
         dispatch(fetchDataStart());
@@ -41,7 +48,10 @@ export const requestData = () => {
                 "Content-type": "application-json"
             }
         })
-            .then(response => response.json())
+            .then(response => {
+                console.log("Response: " + response.status);
+                return response.json();
+            })
             .then(data => {
                 console.log(data);
                 dispatch(fetchDataReceive(data));
@@ -54,7 +64,7 @@ export const postDataHandler = data => {
     return dispatch => {
         dispatch(fetchDataStart());
         dispatch(addPostToStore(data));
-        return fetch(baseUrl + "/posts", {
+        return fetch(baseUrl, {
             method: "POST",
             body: JSON.stringify(data),
             headers: {
@@ -63,8 +73,29 @@ export const postDataHandler = data => {
         })
             .then(response => response.json())
             .then(data => {
+                console.log(JSON.stringify(data));
+                dispatch(requestData());
                 dispatch(fetchDataEnd());
-                console.log("Success", JSON.stringify(data));
+            })
+            .catch(error => console.log("Error", error));
+    };
+};
+
+export const PutMessageHandler = (data, id) => {
+    return dispatch => {
+        dispatch(fetchDataStart());
+        return fetch(baseUrl + id, {
+            method: "PUT",
+            body: JSON.stringify(data),
+            headers: {
+                "Content-type": "application/json"
+            }
+        })
+            .then(response => response.json())
+            .then(data => {
+                console.log(JSON.stringify(data));
+                dispatch(requestData());
+                dispatch(fetchDataEnd());
             })
             .catch(error => console.log("Error", error));
     };

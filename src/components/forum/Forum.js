@@ -12,7 +12,10 @@ class Forum extends Component {
                 {this.props.loading ? (
                     <Loader />
                 ) : (
-                    <ForumBody posts={this.props.posts} />
+                    <ForumBody
+                        messages={this.props.messages}
+                        editMessageHandler={this.props.editMessageHandler}
+                    />
                 )}
             </React.Fragment>
         );

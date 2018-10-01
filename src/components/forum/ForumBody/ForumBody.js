@@ -13,28 +13,31 @@ const forumBody = props => {
                 <table className="table table-striped table-bordered table-responsive-lg">
                     <thead className="thead-dark">
                         <tr>
-                            <th scope="col" className="topic-col">
-                                Subject
+                            <th scope="col" className="message-col col-8">
+                                Message
                             </th>
-                            <th scope="col" className="created-col">
-                                Created
+                            <th scope="col" className="col-2">
+                                Author
                             </th>
-                            <th scope="col">Statistics</th>
-                            <th scope="col" className="last-post-col">
-                                Last post
+                            <th scope="col" className="col-1">
+                                Edit
+                            </th>
+                            <th scope="col" className="col-1">
+                                Delete
                             </th>
                         </tr>
                     </thead>
                     <tbody>
-                        {props.messages.map(post => {
+                        {props.messages.map(message => {
                             return (
                                 <ForumPost
-                                    id={post.id}
-                                    key={post.id}
-                                    subject={post.title}
-                                    author={post.userId}
-                                    message={post.body}
-                                    date={post.date}
+                                    id={message.id}
+                                    key={message.id}
+                                    author={message.author}
+                                    message={message.message}
+                                    editMessageHandler={
+                                        props.editMessageHandler
+                                    }
                                 />
                             );
                         })}

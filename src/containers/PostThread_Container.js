@@ -1,8 +1,20 @@
-import PostThread from "../components/forum/PostThread/PostThread";
 import { connect } from "react-redux";
 
-export default connect((state, props) => ({
-    post: state.posts.find(
-        post => post.id === parseInt(props.match.params.id, 10)
-    )
-}))(PostThread);
+import { editMessageHandler } from "../redux/actions/action_creators";
+import PostThread from "../components/forum/PostThread/PostThread";
+
+const mapStateToProps = state => {
+    return {
+        messages: state.messages,
+        loading: state.loading
+    };
+};
+
+const mapDispatchToProps = dispatch => {
+    return {};
+};
+
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(PostThread);

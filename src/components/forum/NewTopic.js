@@ -1,59 +1,26 @@
 import React, { Component } from "react";
 
 class NewTopic extends Component {
-    state = {
-        title: "",
-        body: ""
-    };
-
-    resetState = () => {
-        this.setState({ title: "", body: "" });
-    };
-
-    createMessageHandler = event => {
-        event.preventDefault();
-        const data = {
-            title: this.state.title,
-            body: this.state.body
-        };
-        this.resetState();
-        this.props.postDataHandler(data);
-    };
+    //Can be change to functional component
 
     render() {
         return (
             <div className="row">
                 <div className="col-12">
                     <h2 className="h4 text-white bg-info mb-3 p-4 rounded">
-                        Create new message
+                        {this.props.selectedMessage
+                            ? "Edit message"
+                            : "Create new message"}
                     </h2>
                     <form className="mb-3">
-                        <div className="form-group">
-                            <label htmlFor="subject">Subject:</label>
-                            <input
-                                type="text"
-                                className="form-control"
-                                value={this.state.subject}
-                                onChange={event =>
-                                    this.setState({
-                                        title: event.target.value
-                                    })
-                                }
-                                id="subject"
-                                placeholder="Give your message a subject."
-                                required
-                            />
-                        </div>
                         <div className="form-group">
                             <label htmlFor="message">Message:</label>
                             <textarea
                                 className="form-control"
                                 id="message"
-                                value={this.state.message}
+                                value={this.props.messageBody}
                                 onChange={event =>
-                                    this.setState({
-                                        body: event.target.value
-                                    })
+                                    this.props.handleChange(event.target.value)
                                 }
                                 rows="10"
                                 placeholder="Write your message here."
@@ -61,17 +28,19 @@ class NewTopic extends Component {
                             />
                         </div>
                         <button
-                            onClick={e => this.createMessageHandler(e)}
+                            onClick={this.props.submitMessage}
                             className="btn btn-primary"
                         >
-                            Create message
+                            {this.props.selectedMessage
+                                ? "Update message"
+                                : "Create message"}
                         </button>
                         <button
                             type="reset"
                             className="btn btn-danger"
-                            onClick={this.resetState}
+                            onClick={this.props.clear}
                         >
-                            Reset
+                            Clear
                         </button>
                     </form>
                 </div>
