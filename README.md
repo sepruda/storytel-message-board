@@ -9,6 +9,7 @@
 `npm install`
 
 **start json-server**
+
 _server needs to run on localhost:3000_
 
 `json-server --watch db.json`
