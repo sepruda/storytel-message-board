@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 
-import "./PostThread.css";
+import "./FullPost.css";
 
-class PostThread extends Component {
+class FullPost extends Component {
     state = {
         message: ""
     };
@@ -19,18 +19,16 @@ class PostThread extends Component {
                     <table className="table table-striped table-bordered table-responsive-lg">
                         <thead className="thead-dark">
                             <tr>
-                                <th scope="col" className="col-2">
-                                    Message
-                                </th>
-                                <th scope="col" className="col-10">
-                                    Author
-                                </th>
+                                <th scope="col">Message</th>
+                                <th scope="col">Author</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
-                                <td>
-                                    <p>{message.message}</p>
+                                <td className="col-10">
+                                    <p className="messageBody">
+                                        {message.message}
+                                    </p>
                                 </td>
                                 <td>{message.author}</td>
                             </tr>
@@ -42,4 +40,4 @@ class PostThread extends Component {
     }
 }
 
-export default PostThread;
+export default FullPost;

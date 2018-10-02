@@ -3,14 +3,14 @@ import PropTypes from "prop-types";
 import { Provider } from "react-redux";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import App from "../containers/App_Container";
-import PostThread from "../containers/PostThread_container";
+import FullPost from "../containers/FullPost_container";
 
 const root = ({ store }) => (
     <Provider store={store}>
         <Router>
             <Switch>
                 <Route exact path="/" component={App} />
-                <Route path="/messages/:id" component={PostThread} />
+                <Route path="/messages/:id" component={FullPost} />
             </Switch>
         </Router>
     </Provider>

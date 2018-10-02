@@ -5,7 +5,6 @@ import registerServiceWorker from "./registerServiceWorker";
 import { createStore, applyMiddleware } from "redux";
 import { forum_reducer } from "../src/redux/reducers/forum_reducer";
 import Root from "./components/Root";
-
 import thunk from "redux-thunk";
 
 const store = createStore(

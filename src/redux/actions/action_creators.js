@@ -1,5 +1,4 @@
 import * as Type from "../constants/action_types";
-import { generateDates } from "../actions/helper_functions/helper_functions";
 
 // *** SYNCRONOUS ACTIONS ***
 
@@ -29,6 +28,21 @@ export const addPostToStore = data => {
     };
 };
 
+export const updateMessageHandler = (data, id) => {
+    return {
+        type: Type.UPDATE_MESSAGE_HANDLER,
+        data,
+        id
+    };
+};
+
+export const deleteMessageHandler = id => {
+    return {
+        type: Type.DELETE_MESSAGE_HANDLER,
+        id
+    };
+};
+
 export const setIdEditedMessage = id => {
     return {
         type: Type.SET_ID_EDITED_MESSAGE,
@@ -49,7 +63,6 @@ export const requestData = () => {
             }
         })
             .then(response => {
-                console.log("Response: " + response.status);
                 return response.json();
             })
             .then(data => {
@@ -81,12 +94,33 @@ export const postDataHandler = data => {
     };
 };
 
-export const PutMessageHandler = (data, id) => {
+export const putMessageHandler = (data, id) => {
     return dispatch => {
         dispatch(fetchDataStart());
+        // dispatch(updateMessageHandler(data, id));
         return fetch(baseUrl + id, {
-            method: "PUT",
+            method: "PATCH",
             body: JSON.stringify(data),
+            headers: {
+                "Content-type": "application/json"
+            }
+        })
+            .then(response => response.json())
+            .then(data => {
+                console.log(JSON.stringify(data));
+                dispatch(requestData());
+                dispatch(fetchDataEnd());
+            })
+            .catch(error => console.log("Error", error));
+    };
+};
+
+export const destroyMessageHandler = id => {
+    return dispatch => {
+        dispatch(fetchDataStart());
+        dispatch(deleteMessageHandler(id));
+        return fetch(baseUrl + id, {
+            method: "DELETE",
             headers: {
                 "Content-type": "application/json"
             }

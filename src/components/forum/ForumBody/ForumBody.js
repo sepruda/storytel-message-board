@@ -32,12 +32,13 @@ const forumBody = props => {
                             return (
                                 <ForumPost
                                     id={message.id}
-                                    key={message.id}
+                                    key={message.key}
                                     author={message.author}
                                     message={message.message}
                                     editMessageHandler={
                                         props.editMessageHandler
                                     }
+                                    deleteMessage={props.deleteMessage}
                                 />
                             );
                         })}

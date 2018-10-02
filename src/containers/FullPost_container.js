@@ -1,7 +1,6 @@
 import { connect } from "react-redux";
 
-import { editMessageHandler } from "../redux/actions/action_creators";
-import PostThread from "../components/forum/PostThread/PostThread";
+import FullPost from "../components/forum/FullPost/Fullpost";
 
 const mapStateToProps = state => {
     return {
@@ -17,4 +16,4 @@ const mapDispatchToProps = dispatch => {
 export default connect(
     mapStateToProps,
     mapDispatchToProps
-)(PostThread);
+)(FullPost);

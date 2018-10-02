@@ -15,6 +15,7 @@ class Forum extends Component {
                     <ForumBody
                         messages={this.props.messages}
                         editMessageHandler={this.props.editMessageHandler}
+                        deleteMessage={this.props.deleteMessage}
                     />
                 )}
             </React.Fragment>
