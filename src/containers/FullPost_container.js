@@ -1,6 +1,5 @@
 import { connect } from "react-redux";
-
-import FullPost from "../components/forum/FullPost/Fullpost";
+import FullPost from "../components/forum/FullPost/FullPost";
 
 const mapStateToProps = state => {
     return {

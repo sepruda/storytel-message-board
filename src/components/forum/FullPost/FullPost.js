@@ -3,10 +3,6 @@ import React, { Component } from "react";
 import "./FullPost.css";
 
 class FullPost extends Component {
-    state = {
-        message: ""
-    };
-
     render() {
         const message = this.props.messages.find(
             message => message.id === parseInt(this.props.match.params.id, 10)
@@ -15,7 +11,9 @@ class FullPost extends Component {
         return (
             <div className="row">
                 <div className="col-12">
-                    <h2 className="h4 text-white bg-info mb-0 p-4 rounded-top" />
+                    <h1 className="h2 text-white bg-info mb-0 p-4 rounded-top">
+                        Storytel Message Board
+                    </h1>
                     <table className="table table-striped table-bordered table-responsive-lg">
                         <thead className="thead-dark">
                             <tr>

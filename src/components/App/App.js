@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import "./App.css";
+import PropTypes from "prop-types";
 
 import Forum from "../forum/Forum";
 import NewTopic from "../../components/forum/NewTopic";
@@ -49,12 +50,7 @@ class App extends Component {
     editMessage = event => {
         event.preventDefault();
         const id = this.props.selectedMessage;
-        const editedMessage = this.props.messages.find(
-            message => message.id === id
-        );
         const data = { message: this.state.message };
-        console.log(data);
-
         this.editMessageHandler();
         this.props.putMessageHandler(data, id);
     };
@@ -66,7 +62,6 @@ class App extends Component {
     render() {
         return (
             <React.Fragment>
-                {/* <Breadcrumb /> */}
                 <Forum
                     messages={this.props.messages}
                     loading={this.props.loading}
@@ -82,10 +77,14 @@ class App extends Component {
                     clear={this.resetState}
                     submitEditedMessage={this.editMessage}
                 />
-                {/* <Login /> */}
             </React.Fragment>
         );
     }
 }
+
+App.propTypes = {
+    message: PropTypes.string,
+    data: PropTypes.object
+};
 
 export default App;

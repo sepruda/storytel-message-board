@@ -1,6 +1,6 @@
 import React from "react";
 
-import { BrowserRouter, Route, Link, Switch } from "react-router-dom";
+import { Link } from "react-router-dom";
 import EditButton from "./EditButton";
 import DeleteButton from "./DeleteButton";
 
@@ -8,10 +8,10 @@ const forumPost = props => {
     const TruncateMessage = message =>
         message.length > 50 ? message.substr(0, 50) + "..." : message;
 
-    const authorId = localStorage.getItem("author");
-    const postId = props.author;
+    const authorId = parseInt(localStorage.getItem("author"), 10);
+    const postId = parseInt(props.author, 10);
     let editButton, deleteButton;
-    if (authorId == postId) {
+    if (authorId === postId) {
         editButton = (
             <EditButton
                 editMessageHandler={props.editMessageHandler}

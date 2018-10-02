@@ -28,14 +28,6 @@ export const addPostToStore = data => {
     };
 };
 
-export const updateMessageHandler = (data, id) => {
-    return {
-        type: Type.UPDATE_MESSAGE_HANDLER,
-        data,
-        id
-    };
-};
-
 export const deleteMessageHandler = id => {
     return {
         type: Type.DELETE_MESSAGE_HANDLER,
@@ -97,7 +89,6 @@ export const postDataHandler = data => {
 export const putMessageHandler = (data, id) => {
     return dispatch => {
         dispatch(fetchDataStart());
-        // dispatch(updateMessageHandler(data, id));
         return fetch(baseUrl + id, {
             method: "PATCH",
             body: JSON.stringify(data),
