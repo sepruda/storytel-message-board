@@ -12,7 +12,7 @@ class FullPost extends Component {
             <div className="row">
                 <div className="col-12">
                     <h1 className="h2 text-white bg-info mb-0 p-4 rounded-top">
-                        Storytel Message Board
+                        Message Board
                     </h1>
                     <table className="table table-striped table-bordered table-responsive-lg">
                         <thead className="thead-dark">

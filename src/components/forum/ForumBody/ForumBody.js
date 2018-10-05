@@ -8,23 +8,17 @@ const forumBody = props => {
         <div className="row">
             <div className="col-12">
                 <h1 className="h2 text-white bg-info mb-0 p-4 rounded-top">
-                    Storytel Message Board
+                    Message Board
                 </h1>
                 <table className="table table-striped table-bordered table-responsive-lg">
-                    <thead className="thead-dark">
+                    <thead className="thead-dark text-center">
                         <tr>
-                            <th scope="col" className="message-col col-8">
+                            <th scope="col" className="message-col">
                                 Message
                             </th>
-                            <th scope="col" className="col-2">
-                                Author
-                            </th>
-                            <th scope="col" className="col-1">
-                                Edit
-                            </th>
-                            <th scope="col" className="col-1">
-                                Delete
-                            </th>
+                            <th scope="col">Author</th>
+                            <th scope="col">Edit</th>
+                            <th scope="col">Delete</th>
                         </tr>
                     </thead>
                     <tbody>

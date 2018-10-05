@@ -21,13 +21,6 @@ export const fetchDataEnd = () => {
     };
 };
 
-export const addPostToStore = data => {
-    return {
-        type: Type.ADD_POST_TO_STORE,
-        data
-    };
-};
-
 export const deleteMessageHandler = id => {
     return {
         type: Type.DELETE_MESSAGE_HANDLER,
@@ -47,7 +40,6 @@ const baseUrl = "http://localhost:3000/messages/";
 export const requestData = () => {
     return dispatch => {
         dispatch(fetchDataStart());
-
         return fetch(baseUrl, {
             method: "GET",
             headers: {
@@ -68,7 +60,6 @@ export const requestData = () => {
 export const postDataHandler = data => {
     return dispatch => {
         dispatch(fetchDataStart());
-        dispatch(addPostToStore(data));
         return fetch(baseUrl, {
             method: "POST",
             body: JSON.stringify(data),
@@ -109,7 +100,6 @@ export const putMessageHandler = (data, id) => {
 export const destroyMessageHandler = id => {
     return dispatch => {
         dispatch(fetchDataStart());
-        dispatch(deleteMessageHandler(id));
         return fetch(baseUrl + id, {
             method: "DELETE",
             headers: {

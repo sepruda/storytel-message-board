@@ -34,7 +34,7 @@ const forumPost = props => {
                         </Link>
                     </h6>
                 </td>
-                <td>
+                <td className>
                     <div>{props.author}</div>
                 </td>
                 <td>{editButton}</td>
