@@ -21,13 +21,6 @@ export const fetchDataEnd = () => {
     };
 };
 
-export const deleteMessageHandler = id => {
-    return {
-        type: Type.DELETE_MESSAGE_HANDLER,
-        id
-    };
-};
-
 export const setIdEditedMessage = id => {
     return {
         type: Type.SET_ID_EDITED_MESSAGE,
@@ -53,7 +46,10 @@ export const requestData = () => {
                 console.log(data);
                 dispatch(fetchDataReceive(data));
             })
-            .catch(err => console.log(err));
+            .catch(err => {
+                dispatch(fetchDataEnd());
+                return console.log(err);
+            });
     };
 };
 
@@ -73,7 +69,10 @@ export const postDataHandler = data => {
                 dispatch(requestData());
                 dispatch(fetchDataEnd());
             })
-            .catch(error => console.log("Error", error));
+            .catch(error => {
+                dispatch(fetchDataEnd());
+                return console.log("Error", error);
+            });
     };
 };
 
@@ -93,7 +92,10 @@ export const putMessageHandler = (data, id) => {
                 dispatch(requestData());
                 dispatch(fetchDataEnd());
             })
-            .catch(error => console.log("Error", error));
+            .catch(error => {
+                dispatch(fetchDataEnd());
+                return console.log("Error", error);
+            });
     };
 };
 
@@ -112,6 +114,9 @@ export const destroyMessageHandler = id => {
                 dispatch(requestData());
                 dispatch(fetchDataEnd());
             })
-            .catch(error => console.log("Error", error));
+            .catch(error => {
+                dispatch(fetchDataEnd());
+                return console.log("Error", error);
+            });
     };
 };

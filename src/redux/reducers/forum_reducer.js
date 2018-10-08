@@ -1,10 +1,8 @@
 import {
     FETCH_DATA_START,
     FETCH_DATA_RECEIVE,
-    ADD_POST_TO_STORE,
     FETCH_DATA_END,
-    SET_ID_EDITED_MESSAGE,
-    DELETE_MESSAGE_HANDLER
+    SET_ID_EDITED_MESSAGE
 } from "../constants/action_types";
 
 const initialState = {

@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 
 class NewTopic extends Component {
-    //Can be change to functional component
+    //Can be changed to functional component
     resetAuthor = () => {
         localStorage.removeItem("author");
     };

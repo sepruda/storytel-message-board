@@ -9,8 +9,8 @@ const root = ({ store }) => (
     <Provider store={store}>
         <Router>
             <Switch>
-                <Route exact path="/" component={App} />
                 <Route path="/messages/:id" component={FullPost} />
+                <Route path="/" component={App} />
             </Switch>
         </Router>
     </Provider>
